@@ -3,7 +3,7 @@ import os
 DEBUG = True
 # TESTING = True
 user="k12", 
-password="1", 
+password="Kelompok12", 
 host="moneymanager.mysql.database.azure.com", 
 port=3306, 
 database="queries"

@@ -1,4 +1,4 @@
-Flask==2.3.3
+Flask==1.1.4
 Flask-MySQLdb==0.2.0
 WTForms==3.0.1
 passlib==1.7.4

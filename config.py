@@ -2,11 +2,7 @@ import os
 
 DEBUG = True
 # TESTING = True
-user="k12", 
-password="Kelompok12", 
-host="moneymanager.mysql.database.azure.com", 
-port=3306, 
-database="queries"
+user="k12", password="Qwerty123", host="k12.mysql.database.azure.com", port=3306, database="tracker"
 MYSQL_CURSORCLASS = 'DictCursor'
 SECRET_KEY = 'your_secret_key'
 MAIL_SERVER = 'smtp.googlemail.com'

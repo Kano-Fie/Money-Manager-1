@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, flash, redirect, url_for, session, logging, jsonify, Response
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, PasswordField, TextAreaField, IntegerField, validators
@@ -11,8 +12,22 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_mail import Mail, Message
 import plotly.graph_objects as go
 
+# Konfigurasi aplikasi
 app = Flask(__name__, static_url_path='/static')
-app.config.from_pyfile('config.py')
+
+app.config['DEBUG'] = True
+app.config['MYSQL_HOST'] = "k12.mysql.database.azure.com"
+app.config['MYSQL_USER'] = "k12"
+app.config['MYSQL_PASSWORD'] = "Qwerty123"
+port=3306
+app.config['MYSQL_DB'] = 'tracker'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+app.config['SECRET_KEY'] = 'your_secret_key'
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'EMAIL_USER'
+app.config['MAIL_PASSWORD'] = 'EMAIL_PASS'
 
 mysql = MySQL(app)
 mail = Mail(app)

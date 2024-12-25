@@ -1,4 +1,5 @@
 import os
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, flash, redirect, url_for, session, logging, jsonify, Response
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, PasswordField, TextAreaField, IntegerField, validators
@@ -13,24 +14,25 @@ from flask_mail import Mail, Message
 import plotly.graph_objects as go
 import mysql.connector
 
+load_dotenv()
+
 # Koneksi ke database
 db = mysql.connector.connect(
-    host="moneymanager12.mysql.database.azure.com",
-    user="k12",
-    password="Kelompok12",
-    database="tracker",
-    port=3306
+    host=os.getenv('moneymanager12.mysql.database.azure.com'),
+    user=os.getenv('k12'),
+    password=os.getenv('Kelompok12'),
+    database=os.getenv('tracker')
 )
 
 # Konfigurasi aplikasi
 app = Flask(__name__, static_url_path='/static')
 
 app.config['DEBUG'] = True
-#app.config['MYSQL_HOST'] = 'moneymanager12.mysql.database.azure.com'
-#app.config['MYSQL_USER'] = 'k12'
-#app.config['MYSQL_PASSWORD'] = "Kelompok12"
-#port=3306
-#app.config['MYSQL_DB'] = 'tracker'
+# app.config['MYSQL_HOST'] = 'moneymanager12.mysql.database.azure.com'
+# app.config['MYSQL_USER'] = 'k12'
+# app.config['MYSQL_PASSWORD'] = "Kelompok12"
+port=3306
+# app.config['MYSQL_DB'] = 'tracker'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'

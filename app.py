@@ -16,9 +16,9 @@ import plotly.graph_objects as go
 app = Flask(__name__, static_url_path='/static')
 
 app.config['DEBUG'] = True
-app.config['MYSQL_HOST'] = 'k122.mysql.database.azure.com'
+app.config['MYSQL_HOST'] = 'moneymanager12.mysql.database.azure.com'
 app.config['MYSQL_USER'] = 'k12'
-app.config['MYSQL_PASSWORD'] = "Qwerty123"
+app.config['MYSQL_PASSWORD'] = "Kelompok12"
 port=3306
 app.config['MYSQL_DB'] = 'tracker'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'

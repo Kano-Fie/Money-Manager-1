@@ -14,23 +14,26 @@ import plotly.graph_objects as go
 import mysql.connector
 
 # Koneksi ke database
+try:
 db = mysql.connector.connect(
-    host="moneymanager12.mysql.database.azure.com",
-    user="k12",
-    password="Kelompok12",
-    database="tracker",
-    port=3306
+    host=os.getenv('DB_HOST'),
+    user=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASSWORD'),
+    database=os.getenv('DB_NAME'),
+    connect_timeout=30
 )
+except mysql.connector.Error as err:
+    print(f"Error: {err}")
+    # Tambahkan penanganan error yang sesuai
 
 # Konfigurasi aplikasi
 app = Flask(__name__, static_url_path='/static')
 
 app.config['DEBUG'] = True
-#app.config['MYSQL_HOST'] = 'moneymanager12.mysql.database.azure.com'
-#app.config['MYSQL_USER'] = 'k12'
-#app.config['MYSQL_PASSWORD'] = "Kelompok12"
-#port=3306
-#app.config['MYSQL_DB'] = 'tracker'
+app.config['MYSQL_HOST'] = os.getenv('DB_HOST')
+app.config['MYSQL_USER'] = os.getenv('DB_USER')
+app.config['MYSQL_PASSWORD'] = os.getenv('DB_PASSWORD')
+app.config['MYSQL_DB'] = os.getenv('DB_NAME')
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 app.config['SECRET_KEY'] = 'your_secret_key'
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
